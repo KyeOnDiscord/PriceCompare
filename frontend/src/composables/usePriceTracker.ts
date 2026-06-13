@@ -2,6 +2,11 @@ import { ref, watch } from 'vue'
 import type { Product, ScrapeResult } from '@/types/product'
 
 const STORAGE_KEY = 'price-tracker'
+const API_BASE = import.meta.env.VITE_API_URL ?? ''
+
+function scrapeUrl() {
+  return API_BASE ? `${API_BASE}/api/scrape` : '/api/scrape'
+}
 
 function loadProducts(): Product[] {
   try {
@@ -28,7 +33,7 @@ export function usePriceTracker() {
     error.value = null
 
     try {
-      const res = await fetch('/api/scrape', {
+      const res = await fetch(scrapeUrl(), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url }),
@@ -93,7 +98,7 @@ export function usePriceTracker() {
     error.value = null
 
     try {
-      const res = await fetch('/api/scrape', {
+      const res = await fetch(scrapeUrl(), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ url: product.url }),
