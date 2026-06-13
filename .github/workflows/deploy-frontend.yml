@@ -38,7 +38,7 @@ jobs:
       - name: Build
         working-directory: frontend
         env:
-          VITE_BASE: /PriceCompare/
+          VITE_BASE: /
           VITE_API_URL: https://pricecompare-enm2.onrender.com
         run: npm run build
 
