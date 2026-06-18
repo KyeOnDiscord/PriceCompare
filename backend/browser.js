@@ -4,7 +4,7 @@ let browser = null;
 
 async function getBrowser() {
   if (!browser) {
-    browser = await chromium.launch({ headless: false });
+    browser = await chromium.launch({ headless: true });
   }
   return browser;
 }
