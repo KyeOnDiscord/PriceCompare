@@ -354,8 +354,8 @@ export async function scrapePrice(url) {
     );
   }
 
-  const fs = await import("fs/promises");
-  await fs.writeFile("debug.html", html);
+  // const fs = await import("fs/promises");
+  // await fs.writeFile("debug.html", html);
 
   throw new Error("Could not extract price from this page");
 }
